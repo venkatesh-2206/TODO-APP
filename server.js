@@ -1,0 +1,13 @@
+const {Client}=require('pg');
+const express= require('express');
+const dotenv=require('dotenv');
+dotenv.config();
+const userRouters = require('./router/userrouter.js');
+const taskRouters = require('./router/taskrouter.js');
+const bucketRouter = require('./router/bucketrouter.js');
+const app=express();
+app.use(express.json());
+app.use('/user',userRouters);
+app.use('/task',taskRouters);
+app.use('/bucket',bucketRouter);
+app.listen(process.env.port1,()=>console.log(`server is running ${process.env.port1}`));
